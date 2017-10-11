@@ -1,0 +1,5 @@
+projectKey=HotelApp_V2
+serverUrl=http://172.16.1.44:9000
+dashboardUrl=http://172.16.1.44:9000/dashboard/index/HotelApp_V2
+ceTaskId=AVv8SZsIBo1CEuFhYSIj
+ceTaskUrl=http://172.16.1.44:9000/api/ce/task?id=AVv8SZsIBo1CEuFhYSIj

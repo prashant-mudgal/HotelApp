@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: "org.sonarqube"
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://172.16.1.44:9000"
+        property "sonar.projectName", "HotelAppGradle_v1"
+        property "sonar.projectKey", "HotelAppGradle1_v1"
+
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "."
+        property "sonar.coverage.exclusions", "build/**,**/*.png,**/test/*,**/androidTest/*"
+        property 'sonar.language', 'java'
+        property "sonar.import_unknown_files", true
+
+        property "sonar.android.lint.report", "./build/outputs/lint-results.xml"
+        property "sonar.login", "admin"
+        property "sonar.password", "admin"
+
+    }
+}
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+    defaultConfig {
+        applicationId "com.hotelapp"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
+    compile 'com.google.firebase:firebase-messaging:9.4.0'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    testCompile 'junit:junit:4.12'
+}
+//Add this line
+apply plugin: 'com.google.gms.google-services'
